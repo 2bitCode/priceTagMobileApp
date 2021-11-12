@@ -1,9 +1,11 @@
 import React from "react";
-import { View, StyleSheet, Image, Dimensions } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
 import Welcome from "../components/Welcome";
+import Svg, { Image, ClipPath, Circle } from "react-native-svg";
+import ClickButton from "../components/ClickButton";
 
 const { width, height } = Dimensions.get("window");
-const bgImageHeight = height / 1.5;
+const bgImageHeight = height / 1.33;
 //main home component
 const Home = () => {
   return (
@@ -16,12 +18,19 @@ const Home = () => {
           justifyContent: "center",
         }}
       >
-        <Image
-          style={styles.image}
-          source={require("../assets/Images/bg.jpg")}
-        />
-        <Welcome />
+        <Svg height={bgImageHeight} width={width}>
+          <ClipPath id="clip">
+            <Circle r={bgImageHeight} />
+          </ClipPath>
+          <Image
+            style={styles.image}
+            href={require("../assets/Images/bg.jpg")}
+            preserveAspectRatio="xMidYMid slice"
+            clipPath="url(#clip)"
+          />
+        </Svg>
       </View>
+      <Welcome />
     </View>
   );
 };
@@ -35,10 +44,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: width,
     height: bgImageHeight,
-    opacity: 0.4,
-    position: "absolute",
-    top: 0,
-    left: 0,
+    opacity: 0.45,
   },
 });
 
