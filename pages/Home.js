@@ -14,8 +14,6 @@ const Home = () => {
       <View
         style={{
           ...StyleSheet.absoluteFill,
-          height: bgImageHeight,
-          justifyContent: "center",
         }}
       >
         <Svg height={bgImageHeight} width={width}>
@@ -31,6 +29,10 @@ const Home = () => {
         </Svg>
       </View>
       <Welcome />
+      //Catagory selection part
+      <View style={styles.catagory}>
+        <ClickButton />
+      </View>
     </View>
   );
 };
@@ -45,6 +47,13 @@ const styles = StyleSheet.create({
     width: width,
     height: bgImageHeight,
     opacity: 0.45,
+  },
+  catagory: {
+    position: "absolute",
+    top: bgImageHeight + 15,
+    left: 0,
+    width: "100%",
+    alignItems: "center",
   },
 });
 
