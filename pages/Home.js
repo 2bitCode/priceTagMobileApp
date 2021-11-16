@@ -3,6 +3,7 @@ import { View, StyleSheet, Dimensions } from "react-native";
 import Welcome from "../components/Welcome";
 import Svg, { Image, ClipPath, Circle } from "react-native-svg";
 import ClickButton from "../components/ClickButton";
+import Navbar from "../components/Navbar";
 
 const { width, height } = Dimensions.get("window");
 const bgImageHeight = height / 1.33;
@@ -29,9 +30,12 @@ const Home = () => {
         </Svg>
       </View>
       <Welcome />
-      //Catagory selection part
+
       <View style={styles.catagory}>
         <ClickButton />
+      </View>
+      <View style={styles.navbar}>
+        <Navbar />
       </View>
     </View>
   );
@@ -50,10 +54,21 @@ const styles = StyleSheet.create({
   },
   catagory: {
     position: "absolute",
-    top: bgImageHeight + 15,
+    top: bgImageHeight + 20,
     left: 0,
     width: "100%",
     alignItems: "center",
+  },
+  navbar: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    borderRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: height / 15,
+    backgroundColor: "white",
   },
 });
 
