@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { useFonts, Inter_900Black } from "@expo-google-fonts/inter";
 import { Arapey_400Regular } from "@expo-google-fonts/arapey";
 import AppLoading from "expo-app-loading";
+import { PositionContext } from "./PositionContext";
 
 const Welcome = () => {
+  const { position, setPosition } = useContext(PositionContext);
+
   const [isFontLoaded] = useFonts({
     Inter_900Black,
     Arapey_400Regular,
@@ -15,7 +18,9 @@ const Welcome = () => {
   } else {
     return (
       //top part of the page -- Welcome component
-      <View style={styles.container}>
+      <View
+        style={position === "bottom" ? styles.container : { display: "none" }}
+      >
         <View>
           <Text style={styles.smallTitle}>Welcome to the</Text>
           <Text style={styles.largeTitle}>Price World</Text>

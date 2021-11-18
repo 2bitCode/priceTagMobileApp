@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, Dimensions } from "react-native";
 import Welcome from "../components/Welcome";
 import Svg, { Image, ClipPath, Circle } from "react-native-svg";
-import ClickButton from "../components/ClickButton";
-import Navbar from "../components/Navbar";
 
-const { width, height } = Dimensions.get("window");
-const bgImageHeight = height / 1.33;
+import Navbar from "../components/Navbar";
+import Catagory from "../components/Catagory";
+import { PositionContext } from "../components/PositionContext";
+import { variables } from "../variables";
 //main home component
 const Home = () => {
+  const [position, setPosition] = useState(null);
+
   return (
     //top part of the page -- Welcome component
     <View style={styles.home}>
@@ -17,9 +19,12 @@ const Home = () => {
           ...StyleSheet.absoluteFill,
         }}
       >
-        <Svg height={bgImageHeight} width={width}>
+        <Svg
+          height={variables.IMAGE.bgImageHeight}
+          width={variables.DIMENSIONS.width}
+        >
           <ClipPath id="clip">
-            <Circle r={bgImageHeight} />
+            <Circle r={variables.IMAGE.bgImageHeight} />
           </ClipPath>
           <Image
             style={styles.image}
@@ -29,11 +34,11 @@ const Home = () => {
           />
         </Svg>
       </View>
-      <Welcome />
+      <PositionContext.Provider value={{ position, setPosition }}>
+        <Welcome />
+        <Catagory />
+      </PositionContext.Provider>
 
-      <View style={styles.catagory}>
-        <ClickButton />
-      </View>
       <View style={styles.navbar}>
         <Navbar />
       </View>
@@ -48,17 +53,17 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    width: width,
-    height: bgImageHeight,
+    width: variables.DIMENSIONS.width,
+    height: variables.IMAGE.bgImageHeight,
     opacity: 0.45,
   },
-  catagory: {
-    position: "absolute",
-    top: bgImageHeight + 20,
-    left: 0,
-    width: "100%",
-    alignItems: "center",
-  },
+  // catagory: {
+  //   // position: "absolute",
+  //   // top: bgImageHeight + 20,
+  //   // left: 0,
+  //   width: "100%",
+  //   alignItems: "center",
+  // },
   navbar: {
     position: "absolute",
     bottom: 0,
@@ -67,7 +72,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    height: height / 15,
+    height: variables.DIMENSIONS.height / 15,
     backgroundColor: "white",
   },
 });

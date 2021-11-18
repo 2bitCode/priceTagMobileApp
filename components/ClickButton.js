@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import {
   TouchableOpacity,
   View,
@@ -9,10 +9,17 @@ import {
 } from "react-native";
 import { useFonts, Arapey_400Regular } from "@expo-google-fonts/arapey";
 import AppLoading from "expo-app-loading";
+import { PositionContext } from "../components/PositionContext";
+import { variables } from "../variables";
+import { AntDesign } from "@expo/vector-icons";
 
-const { width, height } = Dimensions.get("window");
+const ClickButton = (props) => {
+  const { position, setPosition } = useContext(PositionContext);
 
-const ClickButton = () => {
+  useEffect(() => {
+    setPosition("bottom");
+  }, [variables.DIMENSIONS.width]);
+
   const [isFontLoaded] = useFonts({
     Arapey_400Regular,
   });
@@ -21,11 +28,22 @@ const ClickButton = () => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} activeOpacity={0.7}>
+      <TouchableOpacity
+        style={styles.button}
+        activeOpacity={0.7}
+        onPress={() => {
+          setPosition(position === "bottom" ? "top" : "bottom");
+        }}
+      >
         <Text style={styles.text}>Choose from this catagory</Text>
-        <Image
+        {/* <Image
           source={require("../assets/Images/down-arrow.png")}
           style={styles.icon}
+        /> */}
+        <AntDesign
+          name={`${position === "bottom" ? "down" : "up"}`}
+          size={30}
+          color="black"
         />
       </TouchableOpacity>
     </View>
@@ -34,7 +52,7 @@ const ClickButton = () => {
 
 const styles = StyleSheet.create({
   container: {
-    minWidth: width / 2,
+    width: variables.DIMENSIONS.width / 1.5,
   },
   button: {
     justifyContent: "center",
