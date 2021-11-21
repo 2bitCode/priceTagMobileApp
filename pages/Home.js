@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
+import { View, StyleSheet } from "react-native";
 import Welcome from "../components/Welcome";
 import Svg, { Image, ClipPath, Circle } from "react-native-svg";
 
@@ -57,13 +57,7 @@ const styles = StyleSheet.create({
     height: variables.IMAGE.bgImageHeight,
     opacity: 0.45,
   },
-  // catagory: {
-  //   // position: "absolute",
-  //   // top: bgImageHeight + 20,
-  //   // left: 0,
-  //   width: "100%",
-  //   alignItems: "center",
-  // },
+
   navbar: {
     position: "absolute",
     bottom: 0,

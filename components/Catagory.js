@@ -4,8 +4,6 @@ import {
   Text,
   StyleSheet,
   FlatList,
-  ScrollView,
-  Touchable,
   TouchableOpacity,
 } from "react-native";
 import ClickButton from "../components/ClickButton";
@@ -13,15 +11,6 @@ import { PositionContext } from "../components/PositionContext";
 import { variables } from "../variables";
 import { useFonts, Arapey_400Regular } from "@expo-google-fonts/arapey";
 import AppLoading from "expo-app-loading";
-
-// const DATA = [
-//   { key: "catagory1" },
-//   { key: "catagory2" },
-//   { key: "catagory3" },
-//   { key: "catagory4" },
-//   { key: "catagory5" },
-//   { key: "catagory6" },
-// ];
 
 const Item = ({ item }) => {
   return (
@@ -96,9 +85,7 @@ const styles = StyleSheet.create({
     width: variables.DIMENSIONS.width / 1.5,
     height: variables.DIMENSIONS.height / 24,
     borderRadius: 10,
-    alignItems: "center",
     textAlign: "center",
-    overflow: "hidden",
   },
 });
 

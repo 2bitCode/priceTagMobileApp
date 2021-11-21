@@ -1,12 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import {
-  TouchableOpacity,
-  View,
-  Text,
-  StyleSheet,
-  Dimensions,
-  Image,
-} from "react-native";
+import { TouchableOpacity, View, Text, StyleSheet } from "react-native";
 import { useFonts, Arapey_400Regular } from "@expo-google-fonts/arapey";
 import AppLoading from "expo-app-loading";
 import { PositionContext } from "../components/PositionContext";
@@ -36,10 +29,6 @@ const ClickButton = (props) => {
         }}
       >
         <Text style={styles.text}>Choose from this catagory</Text>
-        {/* <Image
-          source={require("../assets/Images/down-arrow.png")}
-          style={styles.icon}
-        /> */}
         <AntDesign
           name={`${position === "bottom" ? "down" : "up"}`}
           size={30}
@@ -52,7 +41,7 @@ const ClickButton = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: variables.DIMENSIONS.width / 1.5,
+    minWidth: variables.DIMENSIONS.width / 1.5,
   },
   button: {
     justifyContent: "center",
