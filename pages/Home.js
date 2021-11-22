@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import Welcome from "../components/Welcome";
 import Svg, { Image, ClipPath, Circle } from "react-native-svg";
-
 import Navbar from "../components/Navbar";
 import Catagory from "../components/Catagory";
 import { PositionContext } from "../components/PositionContext";
 import { variables } from "../variables";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 //main home component
-const Home = () => {
+const Home = ({ navigation }) => {
   const [position, setPosition] = useState(null);
 
   return (
@@ -40,7 +41,7 @@ const Home = () => {
       </PositionContext.Provider>
 
       <View style={styles.navbar}>
-        <Navbar />
+        <Navbar navigation={navigation} />
       </View>
     </View>
   );

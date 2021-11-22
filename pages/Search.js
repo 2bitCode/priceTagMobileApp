@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 
 const Search = () => {
   return (
     <View>
-      <Text>Hi, I am search page</Text>
+      <Text>Good to go</Text>
     </View>
   );
 };

@@ -1,10 +1,9 @@
 import React from "react";
 import { View, StyleSheet, TouchableHighlight, Dimensions } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import { variables } from "../variables";
 
-const { width, height } = Dimensions.get("window");
-
-const Navbar = () => {
+const Navbar = ({ navigation }) => {
   const icons = ["home", "search", "menu", "heart", "user"];
 
   const [active, setActive] = React.useState("home");
@@ -15,7 +14,10 @@ const Navbar = () => {
         return (
           <TouchableHighlight
             key={index}
-            onPress={() => setActive(item)}
+            onPress={() => {
+              setActive(item);
+              navigation.navigate("Search");
+            }}
             activeOpacity={0.3}
             underlayColor="#fff"
           >
@@ -40,7 +42,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   icon: {
-    marginHorizontal: (width - 5 * 30) / 10,
+    marginHorizontal: (variables.DIMENSIONS.width - 5 * 30) / 10,
   },
   activeIcon: {
     color: "blue",
