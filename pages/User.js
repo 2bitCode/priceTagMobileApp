@@ -4,12 +4,12 @@ import InputField from "../components/InputField";
 import { variables } from "../variables";
 import Navbar from "../components/Navbar";
 
-const Search = ({ navigation }) => {
+const User = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <InputField />
+      <Text>User</Text>
       <View style={styles.navbar}>
-        <Navbar navigation={navigation} page="search" />
+        <Navbar navigation={navigation} page="user" />
       </View>
     </View>
   );
@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Search;
+export default User;

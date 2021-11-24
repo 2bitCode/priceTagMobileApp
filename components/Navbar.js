@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet, TouchableHighlight, Dimensions } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { variables } from "../variables";
 
-const Navbar = ({ navigation }) => {
+const Navbar = ({ navigation, page }) => {
   const icons = ["home", "search", "menu", "heart", "user"];
 
-  const [active, setActive] = React.useState("home");
+  const active = page;
+
   const activeIcon = [styles.icon, { ...styles.activeIcon }];
   return (
     <View style={styles.container}>
@@ -15,8 +16,7 @@ const Navbar = ({ navigation }) => {
           <TouchableHighlight
             key={index}
             onPress={() => {
-              setActive(item);
-              navigation.navigate("Search");
+              navigation.navigate(item);
             }}
             activeOpacity={0.3}
             underlayColor="#fff"

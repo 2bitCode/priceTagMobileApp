@@ -7,6 +7,9 @@ import AppLoading from "expo-app-loading";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Search from "./pages/Search";
+import Menu from "./pages/Menu";
+import Favourites from "./pages/Favourites";
+import User from "./pages/User";
 
 const cacheImages = (images) => {
   return images.map((image) => {
@@ -41,11 +44,14 @@ const App = () => {
     <View style={styles.container}>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Home"
+          initialRouteName="home"
           screenOptions={{ headerShown: false }}
         >
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Search" component={Search} />
+          <Stack.Screen name="home" component={Home} />
+          <Stack.Screen name="search" component={Search} />
+          <Stack.Screen name="menu" component={Menu} />
+          <Stack.Screen name="heart" component={Favourites} />
+          <Stack.Screen name="user" component={User} />
         </Stack.Navigator>
         <StatusBar style="auto" />
       </NavigationContainer>

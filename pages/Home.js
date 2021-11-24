@@ -6,8 +6,6 @@ import Navbar from "../components/Navbar";
 import Catagory from "../components/Catagory";
 import { PositionContext } from "../components/PositionContext";
 import { variables } from "../variables";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 //main home component
 const Home = ({ navigation }) => {
   const [position, setPosition] = useState(null);
@@ -41,7 +39,7 @@ const Home = ({ navigation }) => {
       </PositionContext.Provider>
 
       <View style={styles.navbar}>
-        <Navbar navigation={navigation} />
+        <Navbar navigation={navigation} page="home" />
       </View>
     </View>
   );
