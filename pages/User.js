@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar";
 const User = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>User</Text>
+      <Text>Oops you are not logged in.</Text>
       <View style={styles.navbar}>
         <Navbar navigation={navigation} page="user" />
       </View>

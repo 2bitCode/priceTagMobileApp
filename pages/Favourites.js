@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar";
 const Favourites = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>Nothing to show here yet.</Text>
+      <Text>You have to login to add Favourites. 😥 </Text>
       <View style={styles.navbar}>
         <Navbar navigation={navigation} page="heart" />
       </View>

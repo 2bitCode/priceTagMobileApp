@@ -19,13 +19,23 @@ export const variables = {
   MENU: {
     data: [
       "Subscription Plans",
-      "Go to home",
-      "Search for products",
-      "Edit Favourites",
+      "Activity",
       "Settings",
       "Privacy Policy",
       "Contact Us",
       "About Us",
+      "Tell a friend",
+      "Help and Feedback",
+    ],
+    icons: [
+      "subscriptions",
+      "local-activity",
+      "settings",
+      "policy",
+      "mail",
+      "people",
+      "emoji-people",
+      "feedback",
     ],
   },
 };
