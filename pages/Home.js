@@ -4,6 +4,7 @@ import Welcome from "../components/Welcome";
 import Svg, { Image, ClipPath, Circle } from "react-native-svg";
 import Navbar from "../components/Navbar";
 import Catagory from "../components/Catagory";
+import BackgroundImageEffect from '../components/BackgroundImageEffect'
 import { PositionContext } from "../components/PositionContext";
 import { variables } from "../variables";
 //main home component
@@ -13,26 +14,7 @@ const Home = ({ navigation }) => {
   return (
     //top part of the page -- Welcome component
     <View style={styles.home}>
-      <View
-        style={{
-          ...StyleSheet.absoluteFill,
-        }}
-      >
-        <Svg
-          height={variables.IMAGE.bgImageHeight}
-          width={variables.DIMENSIONS.width}
-        >
-          <ClipPath id="clip">
-            <Circle r={variables.IMAGE.bgImageHeight} />
-          </ClipPath>
-          <Image
-            style={styles.image}
-            href={require("../assets/Images/bg.jpg")}
-            preserveAspectRatio="xMidYMid slice"
-            clipPath="url(#clip)"
-          />
-        </Svg>
-      </View>
+      <BackgroundImageEffect />
       <PositionContext.Provider value={{ position, setPosition }}>
         <Welcome />
         <Catagory />
@@ -49,12 +31,6 @@ const styles = StyleSheet.create({
   home: {
     flex: 1,
     justifyContent: "center",
-  },
-  image: {
-    flex: 1,
-    width: variables.DIMENSIONS.width,
-    height: variables.IMAGE.bgImageHeight,
-    opacity: 0.45,
   },
 
   navbar: {

@@ -38,4 +38,17 @@ export const variables = {
       "feedback",
     ],
   },
+  FAVOURITES: {
+    products: [
+      { key: "Product0" },
+      { key: "Product1" },
+      { key: "Product2" },
+      { key: "Product3" },
+      { key: "Product4" },
+      { key: "Product5" },
+      { key: "Product6" },
+      { key: "Product7" },
+      { key: "Product8" },
+    ],
+  },
 };

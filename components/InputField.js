@@ -4,8 +4,8 @@ import { Feather } from "@expo/vector-icons";
 import { useFonts, Arapey_400Regular } from "@expo-google-fonts/arapey";
 import AppLoading from "expo-app-loading";
 
-const InputField = () => {
-  const [searchText, setSearchText] = useState(null);
+const InputField = ({isIcon =false, secureTextEntry=false, placeholder}) => {
+  const [searchText, setSerarchText] = useState(null);
   const [isActive, setIsActive] = useState(false);
 
   const [isFontLoaded] = useFonts({ Arapey_400Regular });
@@ -19,22 +19,23 @@ const InputField = () => {
         borderColor: isActive ? "blue" : "#efefef",
       }}
     >
-      <Feather
+      {isIcon ? <Feather
         name="search"
         size={24}
         color={isActive ? "blue" : "black"}
         style={styles.searchIcon}
-      />
+      />:null}
       <TextInput
         style={styles.input}
         value={searchText}
-        onChangeText={() => setSearchText(searchText)}
+        onChangeText={() => setSerarchText(searchText)}
         onFocus={() => {
           setIsActive(true);
         }}
-        placeholder="Search here"
+        placeholder={placeholder}
         autoCorrect={false}
         selectionColor={"blue"}
+        secureTextEntry={secureTextEntry}
       />
     </View>
   );

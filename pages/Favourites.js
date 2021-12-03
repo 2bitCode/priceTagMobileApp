@@ -1,38 +1,26 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
-import InputField from "../components/InputField";
+import { View, ScrollView, FlatList } from "react-native";
 import { variables } from "../variables";
-import Navbar from "../components/Navbar";
+import BackgroundImageEffect from "../components/BackgroundImageEffect";
+import Card from "../components/Card";
 
-const Favourites = ({ navigation }) => {
+const renderItem = ({ item }) => {
+  return <Card text={item.key} />;
+};
+
+const Favourites = () => {
   return (
-    <View style={styles.container}>
-      <Text>You have to login to add Favourites. 😥 </Text>
-      <View style={styles.navbar}>
-        <Navbar navigation={navigation} page="heart" />
-      </View>
+    <View style={{ flex: 1 }}>
+      <BackgroundImageEffect />
+      <FlatList
+        style={{ marginTop: 15 }}
+        data={variables.FAVOURITES.products}
+        renderItem={renderItem}
+        numColumns={2}
+        showsVerticalScrollIndicator={false}
+      />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 30,
-    marginLeft: 10,
-    padding: 10,
-  },
-  navbar: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    borderRadius: 20,
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    height: variables.DIMENSIONS.height / 15,
-    backgroundColor: "white",
-  },
-});
 
 export default Favourites;

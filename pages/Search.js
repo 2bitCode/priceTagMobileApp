@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar";
 const Search = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <InputField />
+      <InputField isIcon={true} placeholder="Search here" />
       <View style={styles.navbar}>
         <Navbar navigation={navigation} page="search" />
       </View>
