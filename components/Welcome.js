@@ -19,8 +19,7 @@ const Welcome = () => {
     return (
       //top part of the page -- Welcome component
       <View
-        style={position === "bottom" ? styles.container : { display: "none" }}
-      >
+        style={position === "bottom" ? styles.container : { display: "none" }}>
         <View>
           <Text style={styles.smallTitle}>Welcome to the</Text>
           <Text style={styles.largeTitle}>Price World</Text>

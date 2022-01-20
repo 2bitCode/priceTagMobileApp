@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import { View, StyleSheet, Text } from "react-native";
 import InputField from "../components/InputField";
 import { variables } from "../variables";
 import Navbar from "../components/Navbar";
 
 const Search = ({ navigation }) => {
+  const [searchText, setSerarchText] = useState(null);
+
+  const onSearchTextChange = useCallback((text) => {
+    setSerarchText(text);
+  });
   return (
     <View style={styles.container}>
-      <InputField isIcon={true} placeholder="Search here" />
+      <InputField
+        isIcon={true}
+        placeholder="Search here"
+        onFieldChange={onSearchTextChange}
+      />
       <View style={styles.navbar}>
         <Navbar navigation={navigation} page="search" />
       </View>

@@ -38,8 +38,7 @@ const Catagory = () => {
       style={[
         styles.container,
         position === "bottom" ? styles.bottomContainer : styles.topContainer,
-      ]}
-    >
+      ]}>
       <ClickButton />
 
       <FlatList

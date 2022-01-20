@@ -4,31 +4,35 @@ import { Feather } from "@expo/vector-icons";
 import { useFonts, Arapey_400Regular } from "@expo-google-fonts/arapey";
 import AppLoading from "expo-app-loading";
 
-const InputField = ({isIcon =false, secureTextEntry=false, placeholder}) => {
-  const [searchText, setSerarchText] = useState(null);
+const InputField = ({
+  isIcon = false,
+  secureTextEntry = false,
+  placeholder,
+}) => {
   const [isActive, setIsActive] = useState(false);
+  const [fieldText, setFieldText] = useState("");
 
   const [isFontLoaded] = useFonts({ Arapey_400Regular });
 
   if (!isFontLoaded) return <AppLoading />;
-
   return (
     <View
       style={{
         ...styles.container,
         borderColor: isActive ? "blue" : "#efefef",
-      }}
-    >
-      {isIcon ? <Feather
-        name="search"
-        size={24}
-        color={isActive ? "blue" : "black"}
-        style={styles.searchIcon}
-      />:null}
+      }}>
+      {isIcon ? (
+        <Feather
+          name="search"
+          size={24}
+          color={isActive ? "blue" : "black"}
+          style={styles.searchIcon}
+        />
+      ) : null}
       <TextInput
         style={styles.input}
-        value={searchText}
-        onChangeText={() => setSerarchText(searchText)}
+        value={fieldText}
+        onChangeText={(text) => setFieldText(text)}
         onFocus={() => {
           setIsActive(true);
         }}
@@ -50,7 +54,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 20,
     borderWidth: 1,
-    // borderColor: "#efefef",
   },
   input: {
     padding: 6,

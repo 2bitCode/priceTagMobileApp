@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import Welcome from "../components/Welcome";
 import Svg, { Image, ClipPath, Circle } from "react-native-svg";
 import Navbar from "../components/Navbar";
 import Catagory from "../components/Catagory";
-import BackgroundImageEffect from '../components/BackgroundImageEffect'
+import BackgroundImageEffect from "../components/BackgroundImageEffect";
 import { PositionContext } from "../components/PositionContext";
 import { variables } from "../variables";
+import axios from "axios";
 //main home component
 const Home = ({ navigation }) => {
   const [position, setPosition] = useState(null);
-
   return (
     //top part of the page -- Welcome component
     <View style={styles.home}>

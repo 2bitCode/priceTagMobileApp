@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { View, StyleSheet, Text, TouchableHighlight } from "react-native";
 import BackgroundImageEffect from "./BackgroundImageEffect";
 import InputField from "./InputField";
 import { variables } from "../variables";
+import { PositionContext } from "./PositionContext";
 import { Arapey_400Regular_Italic, useFonts } from "@expo-google-fonts/arapey";
 import AppLoading from "expo-app-loading";
+import axios from "axios";
 
 const Login = () => {
+  const handleLogin = async () => {
+    try {
+      const res = await axios.post("http://192.168.1.40:8000/login", user);
+      console.log("got login response", res.data);
+    } catch (error) {
+      console.log("Post failed", error.message);
+    }
+  };
+
   const [isFontLoaded] = useFonts({ Arapey_400Regular_Italic });
 
   if (!isFontLoaded) return <AppLoading />;
+
   return (
     <View style={styles.login}>
       <BackgroundImageEffect />
@@ -49,7 +61,7 @@ const Login = () => {
             }}
             activeOpacity={0.3}
             underlayColor="efefef"
-            onPress={() => console.log("pressed")}>
+            onPress={() => handleLogin()}>
             <Text
               style={{
                 color: "white",

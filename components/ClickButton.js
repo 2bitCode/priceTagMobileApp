@@ -26,8 +26,7 @@ const ClickButton = (props) => {
         activeOpacity={0.7}
         onPress={() => {
           setPosition(position === "bottom" ? "top" : "bottom");
-        }}
-      >
+        }}>
         <Text style={styles.text}>Choose from this catagory</Text>
         <AntDesign
           name={`${position === "bottom" ? "down" : "up"}`}

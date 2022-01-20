@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import Home from "./pages/Home";
 import { Asset } from "expo-asset";
@@ -45,8 +45,7 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="home"
-          screenOptions={{ headerShown: false }}
-        >
+          screenOptions={{ headerShown: false }}>
           <Stack.Screen name="home" component={Home} />
           <Stack.Screen name="search" component={Search} />
           <Stack.Screen name="menu" component={Menu} />
