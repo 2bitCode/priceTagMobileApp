@@ -1,24 +1,19 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Text } from "react-native";
-import Login from "../components/Login";
+// import Login from "./Login";
+// import SignUp from "../components/SignUp";
 import { UserContext } from "../components/Context";
 
-const User = () => {
+const User = ({ navigation }) => {
   const [user, setUser] = useState({ email: "", password: "" });
 
   return (
-    <View style={styles.container}>
+    <View style={{ flex: 1 }}>
       <UserContext.Provider value={{ user, setUser }}>
-        <Login />
+        {navigation.navigate("login")}
       </UserContext.Provider>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default User;

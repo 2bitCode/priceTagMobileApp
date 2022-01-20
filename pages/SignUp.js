@@ -1,34 +1,56 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Text, TouchableHighlight } from "react-native";
-import BackgroundImageEffect from "./BackgroundImageEffect";
-import InputField from "./InputField";
+import BackgroundImageEffect from "../components/BackgroundImageEffect";
+import InputField from "../components/InputField";
 import { variables } from "../variables";
 import { Arapey_400Regular_Italic, useFonts } from "@expo-google-fonts/arapey";
 import AppLoading from "expo-app-loading";
 import axios from "axios";
 
-const Login = () => {
-  const [user, setUser] = useState({ email: null, password: null });
+const SignUp = ({ navigation }) => {
+  const [user, setUser] = useState({
+    username: null,
+    email: null,
+    password: null,
+  });
 
-  const onUserChange = (isEmail, text) => {
-    setUser(isEmail ? { ...user, email: text } : { ...user, password: text });
+  const onUserChange = (type, text) => {
+    switch (type) {
+      case "Username":
+        setUser({ ...user, username: text });
+        break;
+      case "Email or Phone":
+        setUser({ ...user, email: text });
+        break;
+      case "Password":
+        setUser({ ...user, password: text });
+        break;
+      default:
+        break;
+    }
   };
 
-  const handleLogin = async () => {
+  const handleSignUp = async () => {
     try {
-      const res = await axios.post("http://192.168.1.40:8000/login", user);
-      console.log("got login response", res.data);
-    } catch (error) {
-      console.log("Post failed", error.message);
+      const response = await axios.post(
+        "http://192.168.1.40:8000/signup",
+        user
+      );
+      console.log("Got SignUp response", response.data);
+
+      if (response.data.success) {
+        navigation.navigate("login");
+      }
+    } catch (err) {
+      console.log(err.message);
     }
   };
 
   const [isFontLoaded] = useFonts({ Arapey_400Regular_Italic });
 
   if (!isFontLoaded) return <AppLoading />;
-
   return (
-    <View style={styles.login}>
+    <View style={{ flex: 1 }}>
       <BackgroundImageEffect />
       <View
         style={{
@@ -43,11 +65,18 @@ const Login = () => {
             fontFamily: "Arapey_400Regular_Italic",
             color: "blue",
           }}>
-          Login
+          Sign Up
         </Text>
         <View style={{ borderWidth: 1, borderColor: "blue" }}></View>
       </View>
-      <View style={styles.form}>
+      <View
+        style={{
+          marginVertical: variables.DIMENSIONS.height / 3,
+          padding: 10,
+        }}>
+        <View style={{ marginVertical: 10 }}>
+          <InputField placeholder="Username" onFieldChange={onUserChange} />
+        </View>
         <View style={{ marginVertical: 10 }}>
           <InputField
             placeholder="Email or Phone"
@@ -73,7 +102,7 @@ const Login = () => {
             }}
             activeOpacity={0.3}
             underlayColor="efefef"
-            onPress={() => handleLogin()}>
+            onPress={() => handleSignUp()}>
             <Text
               style={{
                 color: "white",
@@ -81,7 +110,7 @@ const Login = () => {
                 fontSize: 24,
                 textAlign: "center",
               }}>
-              Login
+              Sign Up
             </Text>
           </TouchableHighlight>
         </View>
@@ -90,14 +119,4 @@ const Login = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  login: {
-    flex: 1,
-  },
-  form: {
-    marginVertical: variables.DIMENSIONS.height / 3,
-    padding: 10,
-  },
-});
-
-export default Login;
+export default SignUp;

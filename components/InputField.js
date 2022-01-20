@@ -35,7 +35,7 @@ const InputField = ({
         value={fieldText}
         onChangeText={(text) => {
           setFieldText(text);
-          onFieldChange(!secureTextEntry, text);
+          onFieldChange(placeholder, text);
         }}
         onFocus={() => {
           setIsActive(true);

@@ -10,6 +10,8 @@ import Search from "./pages/Search";
 import Menu from "./pages/Menu";
 import Favourites from "./pages/Favourites";
 import User from "./pages/User";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 
 const cacheImages = (images) => {
   return images.map((image) => {
@@ -51,6 +53,8 @@ const App = () => {
           <Stack.Screen name="menu" component={Menu} />
           <Stack.Screen name="heart" component={Favourites} />
           <Stack.Screen name="user" component={User} />
+          <Stack.Screen name="login" component={Login} />
+          <Stack.Screen name="signup" component={SignUp} />
         </Stack.Navigator>
         <StatusBar style="auto" />
       </NavigationContainer>
