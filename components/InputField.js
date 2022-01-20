@@ -8,6 +8,7 @@ const InputField = ({
   isIcon = false,
   secureTextEntry = false,
   placeholder,
+  onFieldChange,
 }) => {
   const [isActive, setIsActive] = useState(false);
   const [fieldText, setFieldText] = useState("");
@@ -32,7 +33,10 @@ const InputField = ({
       <TextInput
         style={styles.input}
         value={fieldText}
-        onChangeText={(text) => setFieldText(text)}
+        onChangeText={(text) => {
+          setFieldText(text);
+          onFieldChange(!secureTextEntry, text);
+        }}
         onFocus={() => {
           setIsActive(true);
         }}

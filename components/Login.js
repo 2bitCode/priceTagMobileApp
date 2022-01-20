@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, Text, TouchableHighlight } from "react-native";
 import BackgroundImageEffect from "./BackgroundImageEffect";
 import InputField from "./InputField";
@@ -8,6 +8,12 @@ import AppLoading from "expo-app-loading";
 import axios from "axios";
 
 const Login = () => {
+  const [user, setUser] = useState({ email: null, password: null });
+
+  const onUserChange = (isEmail, text) => {
+    setUser(isEmail ? { ...user, email: text } : { ...user, password: text });
+  };
+
   const handleLogin = async () => {
     try {
       const res = await axios.post("http://192.168.1.40:8000/login", user);
@@ -43,10 +49,17 @@ const Login = () => {
       </View>
       <View style={styles.form}>
         <View style={{ marginVertical: 10 }}>
-          <InputField placeholder="Email or Phone" />
+          <InputField
+            placeholder="Email or Phone"
+            onFieldChange={onUserChange}
+          />
         </View>
         <View style={{ marginVertical: 10 }}>
-          <InputField placeholder="Password" secureTextEntry={true} />
+          <InputField
+            placeholder="Password"
+            onFieldChange={onUserChange}
+            secureTextEntry={true}
+          />
         </View>
         <View
           style={{ width: "50%", alignSelf: "flex-end", marginVertical: 10 }}>
