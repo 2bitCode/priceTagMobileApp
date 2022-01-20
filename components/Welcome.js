@@ -3,7 +3,7 @@ import { Text, View, StyleSheet } from "react-native";
 import { useFonts, Inter_900Black } from "@expo-google-fonts/inter";
 import { Arapey_400Regular } from "@expo-google-fonts/arapey";
 import AppLoading from "expo-app-loading";
-import { PositionContext } from "./PositionContext";
+import { PositionContext } from "./Context";
 
 const Welcome = () => {
   const { position, setPosition } = useContext(PositionContext);

@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { TouchableOpacity, View, Text, StyleSheet } from "react-native";
 import { useFonts, Arapey_400Regular } from "@expo-google-fonts/arapey";
 import AppLoading from "expo-app-loading";
-import { PositionContext } from "../components/PositionContext";
+import { PositionContext } from "../components/Context";
 import { variables } from "../variables";
 import { AntDesign } from "@expo/vector-icons";
 

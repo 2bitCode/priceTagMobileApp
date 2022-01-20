@@ -5,7 +5,7 @@ import Svg, { Image, ClipPath, Circle } from "react-native-svg";
 import Navbar from "../components/Navbar";
 import Catagory from "../components/Catagory";
 import BackgroundImageEffect from "../components/BackgroundImageEffect";
-import { PositionContext } from "../components/PositionContext";
+import { PositionContext } from "../components/Context";
 import { variables } from "../variables";
 import axios from "axios";
 //main home component

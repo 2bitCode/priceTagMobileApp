@@ -1,9 +1,8 @@
-import React, { useCallback, useState } from "react";
+import React from "react";
 import { View, StyleSheet, Text, TouchableHighlight } from "react-native";
 import BackgroundImageEffect from "./BackgroundImageEffect";
 import InputField from "./InputField";
 import { variables } from "../variables";
-import { PositionContext } from "./PositionContext";
 import { Arapey_400Regular_Italic, useFonts } from "@expo-google-fonts/arapey";
 import AppLoading from "expo-app-loading";
 import axios from "axios";

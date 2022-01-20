@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import ClickButton from "../components/ClickButton";
-import { PositionContext } from "../components/PositionContext";
+import { PositionContext } from "../components/Context";
 import { variables } from "../variables";
 import { useFonts, Arapey_400Regular } from "@expo-google-fonts/arapey";
 import AppLoading from "expo-app-loading";
