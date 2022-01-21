@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { View, Text, TouchableHighlight } from "react-native";
 import BackgroundImageEffect from "../components/BackgroundImageEffect";
 import InputField from "../components/InputField";
@@ -6,10 +6,13 @@ import { variables } from "../variables";
 import { Arapey_400Regular_Italic, useFonts } from "@expo-google-fonts/arapey";
 import AppLoading from "expo-app-loading";
 import axios from "axios";
+import { UserContext } from "../components/Context";
 
 const Login = ({ navigation }) => {
   const [user, setUser] = useState({ email: null, password: null });
   const [error, setError] = useState(null);
+  const { loggedinUser, setLoggedinUser } = useContext(UserContext);
+
   const onUserChange = (type, text) => {
     switch (type) {
       case "Email or Phone": {
@@ -32,7 +35,8 @@ const Login = ({ navigation }) => {
 
       if (res.data.success) {
         console.log("You are welcome ", res.data.user.username);
-        navigation.navigate("home");
+        setLoggedinUser(res.data.user);
+        navigation.navigate("user");
       } else {
         setError(res.data.message);
       }

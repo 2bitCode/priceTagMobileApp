@@ -28,6 +28,7 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   const [isReady, setIsReady] = useState(false);
+  const [loggedinUser, setLoggedinUser] = useState(null);
   const _loadAssetsAsync = async () => {
     const imageAssets = cacheImages([require("./assets/Images/bg.jpg")]);
     await Promise.all([...imageAssets]);
@@ -45,20 +46,22 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="home"
-          screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="home" component={Home} />
-          <Stack.Screen name="search" component={Search} />
-          <Stack.Screen name="menu" component={Menu} />
-          <Stack.Screen name="heart" component={Favourites} />
-          <Stack.Screen name="user" component={User} />
-          <Stack.Screen name="login" component={Login} />
-          <Stack.Screen name="signup" component={SignUp} />
-        </Stack.Navigator>
-        <StatusBar style="auto" />
-      </NavigationContainer>
+      <UserContext.Provider value={{ loggedinUser, setLoggedinUser }}>
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName="home"
+            screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="home" component={Home} />
+            <Stack.Screen name="search" component={Search} />
+            <Stack.Screen name="menu" component={Menu} />
+            <Stack.Screen name="heart" component={Favourites} />
+            <Stack.Screen name="user" component={User} />
+            <Stack.Screen name="login" component={Login} />
+            <Stack.Screen name="signup" component={SignUp} />
+          </Stack.Navigator>
+          <StatusBar style="auto" />
+        </NavigationContainer>
+      </UserContext.Provider>
     </View>
   );
 };

@@ -1,17 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { View, StyleSheet, Text } from "react-native";
+import Dashboard from "../components/Dashboard";
 import { UserContext } from "../components/Context";
 
 const User = ({ navigation }) => {
-  const [user, setUser] = useState({ email: "", password: "" });
+  const { loggedinUser, setLoggedinUser } = useContext(UserContext);
 
   return (
     <View style={{ flex: 1 }}>
-      <UserContext.Provider value={{ user, setUser }}>
-        {navigation.navigate("login")}
-      </UserContext.Provider>
+      {!loggedinUser ? navigation.navigate("login") : <Dashboard />}
     </View>
   );
 };
-
 export default User;
