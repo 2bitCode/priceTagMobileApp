@@ -13,7 +13,7 @@ const SignUp = ({ navigation }) => {
     email: null,
     password: null,
   });
-
+  const [error, setError] = useState(null);
   const onUserChange = (type, text) => {
     switch (type) {
       case "Username":
@@ -32,6 +32,7 @@ const SignUp = ({ navigation }) => {
 
   const handleSignUp = async () => {
     try {
+      console.log("This is the user thats being sent", user);
       const response = await axios.post(
         "http://192.168.1.40:8000/signup",
         user
@@ -39,7 +40,10 @@ const SignUp = ({ navigation }) => {
       console.log("Got SignUp response", response.data);
 
       if (response.data.success) {
+        setError(null);
         navigation.navigate("login");
+      } else {
+        setError(response.data.message);
       }
     } catch (err) {
       console.log(err.message);
@@ -74,6 +78,7 @@ const SignUp = ({ navigation }) => {
           marginVertical: variables.DIMENSIONS.height / 3,
           padding: 10,
         }}>
+        <Text style={{ color: "red" }}>{error}</Text>
         <View style={{ marginVertical: 10 }}>
           <InputField placeholder="Username" onFieldChange={onUserChange} />
         </View>

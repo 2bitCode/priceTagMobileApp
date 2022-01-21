@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Text } from "react-native";
-// import Login from "./Login";
-// import SignUp from "../components/SignUp";
 import { UserContext } from "../components/Context";
 
 const User = ({ navigation }) => {

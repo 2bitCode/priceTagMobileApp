@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import Home from "./pages/Home";
 import { Asset } from "expo-asset";
@@ -12,6 +12,7 @@ import Favourites from "./pages/Favourites";
 import User from "./pages/User";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import { UserContext } from "./components/Context";
 
 const cacheImages = (images) => {
   return images.map((image) => {

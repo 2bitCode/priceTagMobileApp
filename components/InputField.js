@@ -32,7 +32,7 @@ const InputField = ({
       ) : null}
       <TextInput
         style={styles.input}
-        value={fieldText}
+        defaultValue={fieldText}
         onChangeText={(text) => {
           setFieldText(text);
           onFieldChange(placeholder, text);

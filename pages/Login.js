@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TouchableHighlight } from "react-native";
 import BackgroundImageEffect from "../components/BackgroundImageEffect";
 import InputField from "../components/InputField";
@@ -9,7 +9,7 @@ import axios from "axios";
 
 const Login = ({ navigation }) => {
   const [user, setUser] = useState({ email: null, password: null });
-
+  const [error, setError] = useState(null);
   const onUserChange = (type, text) => {
     switch (type) {
       case "Email or Phone": {
@@ -33,6 +33,8 @@ const Login = ({ navigation }) => {
       if (res.data.success) {
         console.log("You are welcome ", res.data.user.username);
         navigation.navigate("home");
+      } else {
+        setError(res.data.message);
       }
     } catch (error) {
       console.log("Post failed", error.message);
@@ -72,6 +74,7 @@ const Login = ({ navigation }) => {
           marginVertical: variables.DIMENSIONS.height / 3,
           padding: 10,
         }}>
+        <Text style={{ color: "red" }}>{error}</Text>
         <View style={{ marginVertical: 10 }}>
           <InputField
             placeholder="Email or Phone"
