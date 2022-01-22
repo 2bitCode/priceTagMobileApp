@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text } from "react-native";
 import { variables } from "../variables";
 
-const Head = () => {
+const Head = ({ text }) => {
   return (
     <View
       style={{
@@ -26,7 +26,7 @@ const Head = () => {
           fontSize: 40,
           padding: 10,
         }}>
-        Price Tag
+        {text}
       </Text>
     </View>
   );
