@@ -52,21 +52,17 @@ const Menu = ({ navigation }) => {
       <ScrollView showsVerticalScrollIndicator={false}>
         {variables.MENU.data.map((elem, index) => {
           return (
-            <>
+            <React.Fragment key={elem}>
               <TouchableHighlight
                 style={{
                   ...styles.touchable,
                   borderWidth: selected === index ? 1 : 0,
                 }}
-                key={index}
                 activeOpacity={0.3}
                 onPress={() => setSelected(index)}
                 underlayColor="efefef">
-                <View
-                  key={index}
-                  style={{ display: "flex", flexDirection: "row" }}>
+                <View style={{ display: "flex", flexDirection: "row" }}>
                   <MaterialIcons
-                    key={index}
                     name={variables.MENU.icons[index]}
                     size={30}
                     color={selected === index ? "blue" : "black"}
@@ -75,13 +71,12 @@ const Menu = ({ navigation }) => {
                 </View>
               </TouchableHighlight>
               <View
-                key={elem}
                 style={{
                   borderWidth: 1,
                   borderColor: "blue",
                   display: index === 5 ? "flex" : "none",
                 }}></View>
-            </>
+            </React.Fragment>
           );
         })}
       </ScrollView>
