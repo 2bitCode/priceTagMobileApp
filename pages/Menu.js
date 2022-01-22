@@ -44,8 +44,7 @@ const Menu = ({ navigation }) => {
             color: "blue",
             fontSize: 40,
             padding: 10,
-          }}
-        >
+          }}>
           Price Tag
         </Text>
       </View>
@@ -62,12 +61,10 @@ const Menu = ({ navigation }) => {
                 key={index}
                 activeOpacity={0.3}
                 onPress={() => setSelected(index)}
-                underlayColor="efefef"
-              >
+                underlayColor="efefef">
                 <View
                   key={index}
-                  style={{ display: "flex", flexDirection: "row" }}
-                >
+                  style={{ display: "flex", flexDirection: "row" }}>
                   <MaterialIcons
                     key={index}
                     name={variables.MENU.icons[index]}
@@ -78,12 +75,12 @@ const Menu = ({ navigation }) => {
                 </View>
               </TouchableHighlight>
               <View
+                key={elem}
                 style={{
                   borderWidth: 1,
                   borderColor: "blue",
                   display: index === 5 ? "flex" : "none",
-                }}
-              ></View>
+                }}></View>
             </>
           );
         })}
