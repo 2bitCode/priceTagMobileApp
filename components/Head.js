@@ -9,7 +9,6 @@ const Head = ({ text }) => {
         height: variables.DIMENSIONS.height / 4,
         display: "flex",
         flexDirection: "column",
-        overflow: "hidden",
       }}>
       <Image
         source={require("../assets/Images/bg.jpg")}
@@ -28,6 +27,7 @@ const Head = ({ text }) => {
         }}>
         {text}
       </Text>
+      <View style={{ borderWidth: 1, borderColor: "blue" }}></View>
     </View>
   );
 };

@@ -30,8 +30,9 @@ const Menu = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Head text={"Price Tag"} />
-      <View style={{ borderWidth: 1, borderColor: "blue" }}></View>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={{ overflow: "hidden", marginTop: 12 }}>
         {variables.MENU.data.map((elem, index) => {
           return (
             <React.Fragment key={elem}>
@@ -72,13 +73,8 @@ const styles = StyleSheet.create({
     marginTop: 40,
     marginLeft: 10,
     padding: 10,
-  },
-
-  menuHead: {
-    height: variables.DIMENSIONS.height / 4,
     display: "flex",
     flexDirection: "column",
-    overflow: "hidden",
   },
 
   touchable: {
@@ -95,24 +91,10 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    // alignSelf: "center",
     textAlign: "center",
-    // borderWidth: 1,
     flex: 1,
     fontSize: 20,
     fontFamily: "Arapey_400Regular",
-  },
-
-  navbar: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    borderRadius: 20,
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    height: variables.DIMENSIONS.height / 15,
-    backgroundColor: "white",
   },
 });
 
