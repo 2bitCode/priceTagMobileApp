@@ -6,7 +6,7 @@ const Dashboard = () => {
   const { loggedinUser, setLoggedinUser } = useContext(UserContext);
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Welcome to the app {loggedinUser.username}</Text>
+      <Text>Welcome to the app {`${loggedinUser.username}`}</Text>
     </View>
   );
 };

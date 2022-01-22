@@ -28,7 +28,7 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   const [isReady, setIsReady] = useState(false);
-  const [loggedinUser, setLoggedinUser] = useState(null);
+  const [loggedinUser, setLoggedinUser] = useState({});
   const _loadAssetsAsync = async () => {
     const imageAssets = cacheImages([require("./assets/Images/bg.jpg")]);
     await Promise.all([...imageAssets]);
