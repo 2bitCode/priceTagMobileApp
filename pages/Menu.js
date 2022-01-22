@@ -8,7 +8,7 @@ import {
   ScrollView,
 } from "react-native";
 import { variables } from "../variables";
-import Navbar from "../components/Navbar";
+import Head from "../components/Head";
 import {
   Arapey_400Regular,
   Arapey_400Regular_Italic,
@@ -29,25 +29,7 @@ const Menu = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.menuHead}>
-        <Image
-          source={require("../assets/Images/bg.jpg")}
-          style={{
-            borderRadius: 500,
-            width: "40%",
-            height: "70%",
-          }}
-        />
-        <Text
-          style={{
-            fontFamily: "Arapey_400Regular_Italic",
-            color: "blue",
-            fontSize: 40,
-            padding: 10,
-          }}>
-          Price Tag
-        </Text>
-      </View>
+      <Head text={"Price Tag"} />
       <View style={{ borderWidth: 1, borderColor: "blue" }}></View>
       <ScrollView showsVerticalScrollIndicator={false}>
         {variables.MENU.data.map((elem, index) => {
