@@ -11,6 +11,8 @@ const ClickButton = (props) => {
 
   useEffect(() => {
     setPosition("bottom");
+
+    return () => setPosition(null);
   }, [variables.DIMENSIONS.width]);
 
   const [isFontLoaded] = useFonts({
